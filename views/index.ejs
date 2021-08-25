@@ -1,0 +1,47 @@
+<%-include index-header%>
+<link rel="stylesheet" href="stylesheets/index.css">
+	<!-- 头部框架结束 -->
+	<!-- 文章列表开始 -->
+	<ul class="list">
+		<%if(rs!=undefined){
+		rs.forEach(function(row){	
+		%>
+		<li class="fl">
+			<a href="/index?id=<%=row['_id']%>" class="thumbnail">
+				<img src="<%=row["cover"]%>">
+			</a>
+			<div class="content">
+				<a class="article-title" href="article.html"><%=row["title"]%></a>
+				<div class="article-info">
+					<span class="author"><%=row["author"]%></span>
+					<span id='time'><%=row["publishtime"]%></span>
+				</div>
+				<div class="brief">
+					<%-row["content"]%>
+				</div>
+			</div>
+		</li>
+		<%})}%>
+	</ul>
+	<!-- 文章列表结束 -->
+
+	<!-- 分页开始 -->
+	<% if(page!=undefined||countPage!=undefined){ %>
+	<div class="page w1100">
+	  <li style="display: <%= (page==1)? 'none' : 'inline' %>">
+		  <a href="/?page=<%=page-1%>" >上一页</a>
+		</li>
+		
+		<% for (var i = 1; i <= countPage; i++) { %>
+		  <li><a href="/?page=<%=i %>"><%= i%></a></li>
+		<% } %>
+		
+		<li style="display: <%= (page==countPage)? 'none' : 'inline' %>">
+		  <a href="/?page=<%=page+1%>">下一页</a>
+	  </li>
+	</div>
+	<%}%>
+	<!-- 分页结束 -->
+
+</body>
+</html>

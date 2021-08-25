@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Blog - Content Manager</title>
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../stylesheets/base1.css">
+</head>
+
+<body>
+	<!-- 头部 -->
+    <div class="header">
+    	<!-- 网站标志 -->
+        <div class="logo fl">
+					<a href="/">
+            <div class="logo fl">
+              黑马程序员 <i>ITHEIMA</i>
+            </div>
+					</a>
+        </div>
+        <!-- /网站标志 -->
+        <!-- 用户信息 -->
+        <div class="info">
+            <div class="profile dropdown fr">
+                <span class="btn dropdown-toggle" data-toggle="dropdown">
+            <% if(loginbean==undefined){ %>
+						  admin
+            <%}else{%>
+            <%=loginbean.nicheng%>
+            <%}%>
+					<span class="caret"></span>
+                </span>
+                <ul class="dropdown-menu">
+                    <li><a href="user-edit.html">个人资料</a></li>
+                    <li><a href="/users/logout">退出登录</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- /用户信息 -->
+    </div>
+    <!-- /头部 -->
+		<!-- 主体内容 -->
+		<div class="content">
+			<!-- 侧边栏 -->
+		    <div class="aside fl">
+		        <ul class="menu list-unstyled">
+		            <li>
+		                <a class="item active" href="/users">
+						<span class="glyphicon glyphicon-user"></span>
+						用户管理
+					</a>
+		            </li>
+		            <li>
+		                <a class="item" href="/users/publish">
+			  			<span class="glyphicon glyphicon-th-list"></span>
+			  			文章管理
+			  		</a>
+		            </li>
+		        </ul>
+		        <div class="cprt">
+		            Powered by <a href="/" target="_blank">黑马程序员</a>
+		        </div>
+		    </div>
+		    <!-- 侧边栏 -->

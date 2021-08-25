@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录</title>
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../stylesheets/base1.css">
+</head>
+
+<body>
+    <div class="login-body">
+        <div class="login-container">
+            <h4 class="title">黑马程序员 - 博客管理员登录</h4>
+            <div class="login">
+                <form action="./login" method="get" id='loginForm'>
+                    <div class="form-group">
+                        <label>邮件</label>
+                        <input type="email" name="email" class="form-control" placeholder="请输入邮件地址">
+                    </div>
+                    <div class="form-group">
+                        <label>密码</label>
+                        <input type="password" name="pwd" class="form-control" placeholder="请输入密码">
+                    </div>
+										<input type="hidden" name="subflag" value="1"/> 
+                    <button type="submit" class="btn btn-primary">登录</button>
+                </form>
+            </div>
+            <div class="tips">
+							<a href="/users/users-edit">无账号？点击注册！</a>
+						</div>
+        </div>
+    </div>
+    <script src="../lib/jquery/dist/jquery.min.js"></script>
+    <script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+		<script>
+		
+		//一般这个方法常用，如登录，注册，用来验证表单输入信息，可以直接封装成模块进行多次调用
+		// function serializeToJson(form){
+		// 	var result={};
+		// 	var f= form.serializeArray();
+		// 	f.forEach(function(item){
+		// 		// result.eamil
+		// 		result[item.name] =item.value;
+		// 	});
+		// 	return result;
+		// }
+		// trim() 函数移除字符串两侧的空白字符或其他预定义字符。功能除去字符串开头和末尾的空格或其他字符。
+		// 函数执行成功时返回删除了string字符串首部和尾部空格的字符串，发生错误时返回空字符串（""）。
+		// 如果任何参数的值为NULL,Trim() 函数返回NULL。 
+		
+		//    $('#loginForm').on('submit',function(){
+		// 		 var result=serializeToJson($(this))
+		// 		 console.log(result)
+		// 		 if(result.email.trim().length==0){
+		// 			 alert('请输入邮件地址');
+		// 			 return false;
+		// 		 }
+		// 		 if(result.pwd.trim().length==0){
+		// 			 alert('请输入密码');
+		// 			 return false;
+		// 		 }
+		// 	 })
+		</script>
+</body>
+
+</html>

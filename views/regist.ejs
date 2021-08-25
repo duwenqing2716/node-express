@@ -1,0 +1,59 @@
+<%- include users-header %>
+        <div class="main">
+            <!-- 分类标题 -->
+            <div class="title">
+
+							 <h4 style='display:<%= button=='修改'? 'block':'none'%>'><%= id?id:''%></h4>
+
+                <p class="tips">错误信息</p>
+            </div>
+            <!-- /分类标题 -->
+						<%if(link!=undefined){%>
+            <form class="form-container" method='post' action="<%=link%>">
+						<%}else{%>
+						<form class="form-container" method='post' action="/regist">
+						<%}%>
+                <div class="form-group">
+                    <label>用户名</label>
+                    <input type="text" name='uid' class="form-control" placeholder="请输入用户名" value='<%=rs.uid%>'>
+
+                </div>
+                <div class="form-group">
+                    <label>邮箱</label>
+                    <input type="email" name='email' class="form-control" placeholder="请输入邮箱地址" value='<%=rs.email%>'>
+                </div>
+                <div class="form-group">
+                    <label>密码</label>
+                    <input type="password" name='pwd' class="form-control" placeholder="请输入密码" >
+                </div>
+								<div class="form-group">
+								    <label>重复密码</label>
+								    <input type="password" name='repwd' class="form-control" placeholder="请再次输入密码" >
+								</div>
+                <div class="form-group">
+                    <label>角色</label>
+                    <select class="form-control" name='role'>
+                        <option value='user' <%= rs&&rs.role=="user"?'selected':''%> >普通用户</option>
+                        <option value='admin' <%= rs&&rs.role=="admin"?'selected':''%> >超级管理员</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>状态</label>
+                    <select class="form-control" name='state'>
+                        <option value='1' <%= rs&&rs.state=="1"?'selected':''%> >启用</option>
+                        <option value='0' <%= rs&&rs.state=="0"?'selected':''%> >禁用</option>
+                    </select>
+                </div>
+                <div class="buttons">
+									  <input type="hidden" name='subflag' value='1'>
+                    <input type="submit" class="btn btn-primary" value='<%= button?button:''%>'>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- /主体内容 -->
+    <script src="../lib/jquery/dist/jquery.min.js"></script>
+    <script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<%-include index-header%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>首页</title>
+	<link rel="stylesheet" href="stylesheets/base.css">
+				<link rel="stylesheet" href="stylesheets/article.css">
+</head>
+<body>	
+
+	<%if(rs!=undefined){
+	rs.forEach(function(row){
+	%>
+	<!-- 文章框架开始 -->
+	<div class="article">
+		<div class="w1100">
+			<div class="container">
+				<div class="article-header">
+					<h3 class="article-title"><%= row['title']%></h3>
+					<div class="article-info">
+						<span class="author"><%=row['author']%></span>
+						<span><%= row['publishtime']%></span>
+					</div>
+				</div>
+				<div class="article-content">
+				  <%-row['content']%>
+				</div>
+				<div class="article-comment">
+					
+					<%if(loginbean!=undefined){%>
+					<h4>评论</h4>
+					<form class="comment-form" method='post' action="./comment">
+						<textarea class="comment" name='comment'></textarea>
+						<div class="items">
+						  <input type="hidden" name='subflag' value="<%=row['_id']%>">
+							<input type="submit" value="提交">
+						</div>
+					</form>
+					<%}else{%>
+					<h4>请<a href="./login?id=<%=row['_id']%>">登录</a>后再发表评论</h4>
+					<%}%>
+					
+					<%if(rs1!=undefined){
+					rs1.forEach(function(row){
+					%>
+					<div class="comment-list">
+						<div class="mb10">
+							<div class="article-info">
+								<span class="author"><%=row['author']%></span>
+								<span><%=row['publishtime']%></span>
+							</div>
+							<div class="comment-content">
+								<%=row['content']%>
+							</div>
+						</div>
+					</div>
+					<%})}%>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 文章框架结束 -->
+	<%})}%>
+
+</body>
+</html>
